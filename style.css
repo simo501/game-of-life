@@ -9,6 +9,17 @@ h1 {
     font-size: 48px;
 }
 
+button {
+    border: 0px solid;
+    background: none;
+    font-family: 'Inter';
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #c2c2c2;
+}
+
 footer {
     margin: auto;
     display: flex;
@@ -35,6 +46,13 @@ table, th, td {
     height: 24px;
 }
 
+@media only screen and (max-width: 600px) {
+    .map td {
+        width: 28px;
+        height: 29px;
+    }
+}
+
 .map .on {
     background: #c2c2c2;
 }
@@ -43,31 +61,45 @@ table, th, td {
     background: #f8f8f8;
 }
 
+
 .instruments-container {
     display: flex;
     justify-content: center;
     margin-top: 2%;
 }
+@media only screen and (max-width: 600px) {
+    .instruments-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10%;
+    }
+}
 
-.instruments-container p {
+.game-info {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.game-info p {
     margin: 8px;
     font-size: 10px;
     font-family: 'Inter';
+    text-align: center;
 }
 
-button:hover {
-    background-color: #c2c2c2;
-}
-
-.run  {
-    width: 60px;
+.instruments-container button  {
+    width: auto;
     font-size: 24px;
 }
 
-.stop {
-    width: 60px;
-    font-size: 24px;
+@media only screen and (max-width: 600px) {
+    .instruments-container button  {
+        width: auto;
+        font-size: 32px;
+    }
 }
+
 
 footer {
     margin-top: 5%;

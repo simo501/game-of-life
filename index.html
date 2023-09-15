@@ -20,7 +20,7 @@
 
 <body>
 
-    <h1>game of life</h1>
+    <h1 id="h1-title">game of life</h1>
 
     <script>initMap()</script>
     <!-- <script>printMap()</script> -->
@@ -33,7 +33,12 @@
     </div>
     <div class="game-info">
         <p>tick currently set to 1000ms</p>
+        
     </div>
+    <p id="p-rules" style="visibility: hidden;">Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+        <br>Any live cell with two or three live neighbours lives on to the next generation.
+        <br>Any live cell with more than three live neighbours dies, as if by overpopulation.
+        <br>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</p>
 
 
     <!--<div class="map-container">
@@ -67,7 +72,17 @@
 
         stopBtn.onclick = function () {
             clearInterval(interval);
-        };</script>
+        };
+        
+        document.getElementById("h1-title").onclick = function() {
+            const rules = document.getElementById("p-rules");
+            if (rules.style.visibility == "hidden")
+                rules.style.visibility = "visible";
+            else 
+                rules.style.visibility = "hidden";
+        }
+
+        </script>
 
 </body>
 

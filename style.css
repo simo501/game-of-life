@@ -9,6 +9,12 @@ h1 {
     font-size: 48px;
 }
 
+p {
+    font-size: 12px;
+    text-align: center;
+    font-family: 'Inter';
+}
+
 button {
     border: 0px solid;
     background: none;

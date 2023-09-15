@@ -1,0 +1,80 @@
+body {
+    background: #fff;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-family: 'Inter';
+    font-size: 48px;
+}
+
+footer {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+table, th, td {
+    border: 1px solid #646464;
+    border-collapse: collapse;
+  }
+
+.map {
+    border: 2px solid #646464;
+}
+
+.map td {
+    width: 24px;
+    height: 24px;
+}
+
+.map .on {
+    background: #c2c2c2;
+}
+
+.map .off {
+    background: #f8f8f8;
+}
+
+.instruments-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.instruments-container p {
+    margin: 8px;
+    font-size: 10px;
+    font-family: 'Inter';
+}
+
+button:hover {
+    background-color: #c2c2c2;
+}
+
+.run  {
+    width: 60px;
+    font-size: 24px;
+}
+
+.stop {
+    width: 60px;
+    font-size: 24px;
+}
+
+footer {
+    margin-top: 5%;
+}
+
+footer p {
+    font-family: 'Inter';
+    font-size: 10px;
+    text-align: center;
+}

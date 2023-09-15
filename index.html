@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<head>
+    <title>game of life</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- font (inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <script type="text/javascript" src="game_of_life.js"></script>
+</head>
+
+<html>
+
+<body>
+
+    <h1>game of life</h1>
+
+    <script>initMap()</script>
+    <!-- <script>printMap()</script> -->
+    <script>init_renderMap(12, 12); update_renderMap();</script>
+
+
+    <div class="instruments-container">
+        <button id="runBtn" onclick="" class="run">run</button>
+        <button id="stopBtn" onclick="" class="stop">stop</button>
+        <p>tick currently set to 1000ms</p>
+    </div>
+
+    <!--<div class="map-container">
+        <table class="map">
+            <tbody>
+                <tr>
+                    <th>a</th>
+                    <th>b</th>
+                </tr>
+                <tr>
+                    <th>8</th>
+                    <td class="on"></td>
+                    <td class="on"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>-->
+
+    <script>
+
+        interval = null;
+        let tick = 1000;
+        runBtn = document.getElementById("runBtn");
+        stopBtn = document.getElementById("stopBtn");
+
+        runBtn.onclick = function () {
+            interval = setInterval(function () {
+                game();
+            }, tick);
+        };
+
+        stopBtn.onclick = function () {
+            clearInterval(interval);
+        };</script>
+
+    <footer>
+        <p>2023<br>simo501 in italy</p>
+    </footer>
+
+</body>
+
+
+
+</html>

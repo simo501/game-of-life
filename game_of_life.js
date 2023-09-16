@@ -23,7 +23,7 @@ function initMap() {
             mapObj.array[i][j] = 0;
         }
     }
-    init_model(0,0);
+    initModel(0, 0);
 }
 
 function printMap() {
@@ -37,12 +37,12 @@ function printMap() {
 
 // x and y ofc are the coordinates where 
 // the model have to be initialized
-function init_model(x, y) {
-    mapObj.array[1][4] = 1;
-    mapObj.array[2][5] = 1;
-    mapObj.array[3][3] = 1;
-    mapObj.array[3][4] = 1;
-    mapObj.array[3][5] = 1;
+function initModel(x, y) {
+    mapObj.array[x + 1][y + 4] = 1;
+    mapObj.array[x + 2][y + 5] = 1;
+    mapObj.array[x + 3][y + 3] = 1;
+    mapObj.array[x + 3][y + 4] = 1;
+    mapObj.array[x + 3][y + 5] = 1;
 }
 
 // so we can change the map state
@@ -55,6 +55,14 @@ function getCellState() {
             } else if (cell.classList == "on") {
                 mapObj.array[i][j] = 1;
             }
+        }
+    }
+}
+
+function cleanMap() {
+    for (let i = 0; i < mapObj.rows; i++) {
+        for (let j = 0; j < mapObj.columns; j++) {
+            mapObj.array[i][j] = 0;
         }
     }
 }
@@ -113,12 +121,6 @@ function update_renderMap() {
     }
 }
 
-/*  Qualsiasi cella viva con meno di due celle vive adiacenti muore, come per effetto d'isolamento;
-    Qualsiasi cella viva con due o tre celle vive adiacenti sopravvive alla generazione successiva;
-    Qualsiasi cella viva con più di tre celle vive adiacenti muore, come per effetto di sovrappopolazione;
-    Qualsiasi cella morta con esattamente tre celle vive adiacenti diventa una cella viva, come per effetto di riproduzione. */
-
-
 function nearCellInspector(x, y, mapClone) {
     let min_x, min_y;
     let max_x, max_y;
@@ -160,7 +162,7 @@ function nearCellInspector(x, y, mapClone) {
     return nearCellCounter;
 }
 
-function totalAliveInspector() {
+/* function totalAliveInspector() {
     let cnt = 0;
     for (let i = 0; i < mapObj.rows; i++) {
         for (let j = 0; j < mapObj.columns; j++) {
@@ -169,7 +171,8 @@ function totalAliveInspector() {
         }
     }
     return cnt;
-}
+} */
+
 
 /* https://stackoverflow.com/questions/29173956/start-and-stop-loop-in-javascript-with-start-and-stop-button */
 
@@ -195,6 +198,5 @@ function game() {
             }
         }
     }
-    // console.log("update_rendermap() is being called!");
     update_renderMap();
 }

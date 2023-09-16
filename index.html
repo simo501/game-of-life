@@ -27,18 +27,26 @@
     <script>init_renderMap(12, 12); update_renderMap();</script>
 
 
-    <div class="instruments-container">
+    <div class="direction-container">
         <button id="runBtn" onclick="">run</button>
         <button id="stopBtn" onclick="">stop</button>
     </div>
-    <div class="game-info">
-        <p>tick currently set to 1000ms</p>
-        
+    <div class="settings-container">
+        <button id="clearBtn" onclick="cleanMap(); update_renderMap();">clear</button>
+        <button id="changeTickBtn" onclick="">change tick</button>
     </div>
-    <p id="p-rules" style="visibility: hidden;">Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+
+
+    <div class="game-info">
+        <p id="p-tick-info">tick currently set to 1000ms</p>
+        <p id="p-game-state">not running</p>
+    </div>
+    <p id="p-rules" style="visibility: hidden;">Any live cell with fewer than two live neighbours dies, as if by
+        underpopulation.
         <br>Any live cell with two or three live neighbours lives on to the next generation.
         <br>Any live cell with more than three live neighbours dies, as if by overpopulation.
-        <br>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</p>
+        <br>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+    </p>
 
 
     <!--<div class="map-container">
@@ -58,31 +66,61 @@
     </div>-->
 
     <script>
-
+    
         interval = null;
+
+        let definedTick = [1000, 250, 125, 50, 2000];
+        let changedTick = 1000;
         let tick = 1000;
+        let tickIndex = 0;
+        /* with setInterval you cant change the actual speed until you clear
+        the interval and then you set a new time so we need this little function to make
+        it works */
+        function runGame() {
+            game();
+            console.log(tick);
+            if (changedTick != tick) {
+                changedTick = tick;
+                clearInterval(interval);
+                interval = setInterval(runGame, tick);
+            }
+        }
+
         runBtn = document.getElementById("runBtn");
         stopBtn = document.getElementById("stopBtn");
+        changeTickBtn = document.getElementById("changeTickBtn");
+
+        pTickInfo = document.getElementById("p-tick-info");
+        pGameState = document.getElementById("p-game-state");
 
         runBtn.onclick = function () {
-            interval = setInterval(function () {
-                game();
-            }, tick);
+            interval = setInterval(runGame, tick);
+            pGameState.innerText = "running..."
         };
 
         stopBtn.onclick = function () {
             clearInterval(interval);
+            pGameState.innerText = "not running"
         };
-        
-        document.getElementById("h1-title").onclick = function() {
+
+        changeTickBtn.onclick = function () {
+            if (tickIndex == (definedTick.length-1))
+                tickIndex = 0;
+            else 
+                tickIndex += 1;
+            tick = definedTick[tickIndex];
+            pTickInfo.innerText = "tick currently set to " + tick + "ms";
+        }
+
+        document.getElementById("h1-title").onclick = function () {
             const rules = document.getElementById("p-rules");
             if (rules.style.visibility == "hidden")
                 rules.style.visibility = "visible";
-            else 
+            else
                 rules.style.visibility = "hidden";
         }
 
-        </script>
+    </script>
 
 </body>
 

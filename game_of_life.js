@@ -5,6 +5,15 @@ var mapObj = {
     array: [],
 }
 
+// we set the argument element and then we pass this
+// by passing this we pass the element from which the click happen
+function changeState(element) {
+    if (element.classList == "on")
+        element.setAttribute("class", "off");
+    else if (element.classList = "off")
+        element.setAttribute("class", "on");
+}
+
 function initMap() {
     for (let i = 0; i < mapObj.rows; i++) {
         mapObj.array[i] = new Array(mapObj.columns);
@@ -36,6 +45,20 @@ function init_model(x, y) {
     mapObj.array[3][5] = 1;
 }
 
+// so we can change the map state
+function getCellState() {
+    for (let i = 0; i < mapObj.rows; i++) {
+        for (let j = 0; j < mapObj.columns; j++) {
+            const cell = document.getElementById("ij" + i + j);
+            mapObj.array[i][j] = 0;
+            if (cell.classList == "off") {
+            } else if (cell.classList == "on") {
+                mapObj.array[i][j] = 1;
+            }
+        }
+    }
+}
+
 function init_renderMap(__rows, __columns) {
     const mapContainer = document.createElement("div");
     const map = document.createElement("table");
@@ -58,6 +81,8 @@ function init_renderMap(__rows, __columns) {
             cell.classList.add("off");
             // giving the cell an id 
             cell.setAttribute("id", "ij" + i + j);
+            // setting onclick method
+            cell.setAttribute("onclick", "changeState(this);")
             // cell.appendChild(cellText);
             row.appendChild(cell);
         }
@@ -149,6 +174,7 @@ function totalAliveInspector() {
 /* https://stackoverflow.com/questions/29173956/start-and-stop-loop-in-javascript-with-start-and-stop-button */
 
 function game() {
+    getCellState();
     // we need to create a copy of the mapObj.array 
     const mapClone = JSON.parse(JSON.stringify(mapObj.array));;
     for (let i = 0; i < mapObj.rows; i++) {

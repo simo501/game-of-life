@@ -140,10 +140,10 @@ function nearCellInspector(x, y, mapClone) {
     else
         max_y = y + 1;
 
-    //console.log("x: " + x + " y: " + y + " min_x: " + min_x + " max_x: " + max_x + " min_y: " + min_y + " max_y: " + max_y);
+    // console.log("x: " + x + " y: " + y + " min_x: " + min_x + " max_x: " + max_x + " min_y: " + min_y + " max_y: " + max_y);
 
     let nearCellCounter = 0;
-    console.log("x: ", x, "y: ", y);
+    // console.log("x: ", x, "y: ", y);
     for (let i = min_x; i <= max_x; i++) {
         for (let j = min_y; j <= max_y; j++) {
             if (i == x && j == y) {
@@ -174,6 +174,7 @@ function totalAliveInspector() {
 /* https://stackoverflow.com/questions/29173956/start-and-stop-loop-in-javascript-with-start-and-stop-button */
 
 function game() {
+    // we check for changes every tick
     getCellState();
     // we need to create a copy of the mapObj.array 
     const mapClone = JSON.parse(JSON.stringify(mapObj.array));;

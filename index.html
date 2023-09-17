@@ -26,13 +26,12 @@
     <!-- <script>printMap()</script> -->
     <script>init_renderMap(); update_renderMap();</script>
 
-
     <div class="direction-container">
         <button id="runBtn" onclick="">run</button>
         <button id="stopBtn" onclick="">stop</button>
     </div>
     <div class="settings-container">
-        <button id="clearBtn" onclick="cleanMap(); update_renderMap();">clear</button>
+        <button id="clearBtn" onclick="">clear</button>
         <button id="changeTickBtn" onclick="">change tick</button>
     </div>
 
@@ -89,18 +88,19 @@
         runBtn = document.getElementById("runBtn");
         stopBtn = document.getElementById("stopBtn");
         changeTickBtn = document.getElementById("changeTickBtn");
+        clearBtn = document.getElementById("clearBtn");
 
         pTickInfo = document.getElementById("p-tick-info");
         pGameState = document.getElementById("p-game-state");
 
         runBtn.onclick = function () {
             interval = setInterval(runGame, tick);
-            pGameState.innerText = "running..."
+            pGameState.innerText = "running...";
         };
 
         stopBtn.onclick = function () {
             clearInterval(interval);
-            pGameState.innerText = "not running"
+            pGameState.innerText = "not running";
         };
 
         changeTickBtn.onclick = function () {
@@ -110,6 +110,13 @@
                 tickIndex += 1;
             tick = definedTick[tickIndex];
             pTickInfo.innerText = "tick currently set to " + tick + "ms";
+        }
+
+        clearBtn.onclick = function() {
+            cleanMap();
+            update_renderMap();
+            clearInterval(interval);
+            pGameState.innerText = "not running";
         }
 
         document.getElementById("h1-title").onclick = function () {

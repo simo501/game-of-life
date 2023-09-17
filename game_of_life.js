@@ -67,7 +67,7 @@ function cleanMap() {
     }
 }
 
-function init_renderMap(__rows, __columns) {
+function init_renderMap() {
     const mapContainer = document.createElement("div");
     const map = document.createElement("table");
     const mapBody = document.createElement("tbody");
@@ -77,11 +77,11 @@ function init_renderMap(__rows, __columns) {
     map.classList.add("map");
 
     // creating all cells
-    for (let i = 0; i < __rows; i++) {
+    for (let i = 0; i < mapObj.rows; i++) {
         // creates a table row
         const row = document.createElement("tr");
 
-        for (let j = 0; j < __columns; j++) {
+        for (let j = 0; j < mapObj.columns; j++) {
             // Create a <td> element and a text node, make the text
             // node the contents of the <td>, and put the <td> at
             // the end of the table row
